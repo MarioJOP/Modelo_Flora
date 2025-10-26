@@ -170,6 +170,6 @@ O objetivo é apoiar o mapeamento e identificação da biodiversidade regional p
 
 ## 👩‍💻 Autoria
 
-**José Mário Oliveira Patrício**  
+**Turma CD VI - 2025**  
 UFC – Campus Itapajé  
 Projeto ItapajéBio (Classificação de Flora e Sons de Pássaros)

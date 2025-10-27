@@ -1,3 +1,5 @@
+from genericpath import exists
+
 import torch
 import torch.optim as optim
 from utils.train_and_valid import train_model
@@ -6,6 +8,7 @@ from utils.data import create_data_loaders
 from utils.plot_history import plot_history
 import torch.nn as nn
 from pathlib import Path
+# from utils.model import save_model
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 base_name = "resnet50"
@@ -13,6 +16,11 @@ data_dir = Path("dados")
 
 train_dir = data_dir / "dados_separados" / "train"
 val_dir = data_dir / "dados_separados" / "val"
+
+results_path = Path("results")
+results_path.mkdir(parents=True, exist_ok=True)
+plots_path = results_path / "plots"
+plots_path.mkdir(parents=True, exist_ok=True)
 
 train_loader, val_loader, classes = create_data_loaders(train_dir, val_dir, batch_size=32)
 model = build_model(base_name=base_name, num_classes=len(classes), device=device)
@@ -36,4 +44,6 @@ for opt_name, opt_class in optimizers.items():
         optimizer = opt_class(model.parameters(), lr=lr)
         history = train_model(train_loader, val_loader, model, loss_fn, optimizer, device, num_epochs=50)
         results[opt_name][lr] = history
-        plot_history(history, opt_name, lr)
+        plot_history(history, opt_name, lr, filename=f"learning_curve_{base_name}_{opt_name}_lr{lr}.png")
+
+# save_model(model, optimizer, epoch=50, val_acc=0.91, prefix="resnet50")

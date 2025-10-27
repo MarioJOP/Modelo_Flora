@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-def plot_history(history, optim_name, lr):
+def plot_history(history, optim_name, lr, filename=None):
     plt.figure(figsize=(12,8))
     # accuracy
     plt.subplot(2,1,1)
@@ -19,4 +19,11 @@ def plot_history(history, optim_name, lr):
     plt.ylabel('Loss')
     plt.legend()
     plt.tight_layout()
-    plt.show()
+
+    if matplotlib.get_backend() == "Agg" or filename:
+        filename = filename or "plot_history.png"
+        plt.savefig(filename)
+        print(f"📊 Gráfico salvo em {filename}")
+        plt.close()
+    else:
+        plt.show()

@@ -10,7 +10,7 @@ O projeto faz parte do sistema **ItapajéBio**, voltado para o reconhecimento au
 ```
 Modelo_Flora/
 │
-├── dados/
+├── dados/ # atualmente no .gitignore por limitações de tamanho do github
 │   ├── Tree_Species_Dataset/        # Dataset original com pastas por classe
 │   └── dados_separados/             # Dataset dividido em treino e validação
 │       ├── train/

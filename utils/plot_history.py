@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib
 
 def plot_history(history, optim_name, lr, filename=None):
     plt.figure(figsize=(12,8))

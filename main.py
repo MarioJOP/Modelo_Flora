@@ -44,6 +44,6 @@ for opt_name, opt_class in optimizers.items():
         optimizer = opt_class(model.parameters(), lr=lr)
         history = train_model(train_loader, val_loader, model, loss_fn, optimizer, device, num_epochs=50)
         results[opt_name][lr] = history
-        plot_history(history, opt_name, lr, filename=f"learning_curve_{base_name}_{opt_name}_lr{lr}.png")
+        plot_history(history, opt_name, lr, filename=plots_path / f"learning_curve_{base_name}_{opt_name}_lr{lr}.png")
 
 # save_model(model, optimizer, epoch=50, val_acc=0.91, prefix="resnet50")
